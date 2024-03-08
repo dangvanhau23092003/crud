@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+var cors = require('cors')
 
 const db = require('./config/db/index')
 
@@ -9,6 +10,7 @@ db.connect()
 const routers = require('./routers/indexRouter')
 
 const PORT = 5000
+app.use(cors())
 // routers trong indexRouter
 routers(app)
 

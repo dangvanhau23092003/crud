@@ -1,9 +1,16 @@
-// const UserModel = require('../models/UserModel')
+const UserModel = require("../models/UserModel")
 
 class UserController {
 
-    indexUser(req, res) {
-        res.send('hello')
+    async indexUser(req, res) {
+        try {
+            const users = await UserModel.find()
+            console.log("[users]",users)
+            res.json(users)
+        }
+        catch (err) {
+            console.log(err)
+        }
     }
 
 }

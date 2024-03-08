@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { Schema } = mongoose.Schema()
+const { Schema } = require('mongoose')
 
 const UserModel = new Schema({
     name: {type: String, require: ''},
@@ -8,7 +8,7 @@ const UserModel = new Schema({
     email: {type: String, require: ''},
     contact: {type: Number, require: ''},
 }, {
-    timestamps: true
+    timestamps: true,
 })
 
 module.exports = mongoose.model('users', UserModel)
