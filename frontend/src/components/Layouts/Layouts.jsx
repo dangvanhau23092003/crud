@@ -5,12 +5,14 @@ import Routers from '../../routers/Routers'
 
 export default function Layouts() {
     return (
-        <div className='text-center'>
+        <>
+        <div className='text-center '>
             <Header />
-                <div>
+                <div className='bg-[#ccc] pb-10'>
                     <Routers />
                 </div>
             <Footer />
         </div>
+        </>
     )
 }

@@ -2,7 +2,7 @@ const useRouter = require('./userRouter')
 
 function routers(app) {
 
-    app.get('/', useRouter)
+    app.use('/', useRouter)
 
 }
 

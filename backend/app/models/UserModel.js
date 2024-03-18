@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const { Schema } = require('mongoose')
 
 const UserModel = new Schema({
-    name: {type: String, require: ''},
-    image: {type: String, require: ''},
-    address: {type: Number, require: ''},
-    email: {type: String, require: ''},
-    contact: {type: Number, require: ''},
+    name: {type: String, default: ''},
+    image: {type: String, default: ''},
+    adress: {type: String, default: ''},
+    email: {type: String, default: ''},
+    contact: {type: String, default: ''},
 }, {
     timestamps: true,
 })
