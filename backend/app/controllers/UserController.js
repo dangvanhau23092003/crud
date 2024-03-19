@@ -6,37 +6,53 @@ class UserController {
     async indexUser(req, res) {
         try {
             const users = await UserModel.find()
-            console.log("[users]",users)
+            console.log("[users]", users)
             res.json(users)
         }
         catch (err) {
             console.log(err)
         }
     }
-
+    // [POST] /users
     async storeUser(req, res) {
         try {
-            const {name, email, contact, adress} = req.body
+            const { name, email, contact, adress } = req.body
             const image = req.file.path
             console.log(req.file)
-            const newUser = new UserModel({name, email, contact, adress, image})
-            // const newUser = new UserModel({imageUser})
-
-            // res.json(imageUser)
+            const newUser = new UserModel({ name, email, contact, adress, image })
             await newUser.save()
             res.status(200).json(newUser)
-            // if (!newUser) {
-            //     return res.status(404).json({ message: 'User not found'})
-            // }
-
-            // const saveUser = await newUser.save()
-            // res.status(200).json(newUser)
-            // res.send('saveUser')
         }
         catch (err) {
             console.log("Error", err)
-            res.status(500).json({err: "Error saving user"})
+            res.status(500).json({ err: "Error" })
         }
+    }
+    // [GET] view/:id
+    async getViewUser(req, res) {
+        await UserModel.findOne({ _id: req.params.id })
+            .then(viewUser => res.json(viewUser))
+            .catch(err => res.json(err))
+    }
+    // [GET] edit/:id
+    async editUser(req, res) {
+        await UserModel.findById({ _id: req.params.id })
+            .then(editUser => res.json(editUser))
+            .catch(err => res.json(err))
+    }
+    // [PUT] edit
+    async putUser(req, res) {
+        const imageData = req.file.path
+        const { name, email, adress, contact } = req.body
+        await UserModel.findByIdAndUpdate({ _id: req.params.id }, {
+            name: name,
+            email: email,
+            contact: contact,
+            adress: adress,
+            image: imageData
+        })
+            .then(updateUser => res.json(updateUser))
+            .catch(err => res.json(err))
     }
 
 }

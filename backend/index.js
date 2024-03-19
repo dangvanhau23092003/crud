@@ -14,17 +14,6 @@ app.use(bodyParser.json())
 
 app.use("/uploads", express.static("uploads"))
 
-
-// const storage = multer.diskStorage({
-//     destination: './upload',
-//     filename: (req, res, next) => {
-//         next(null, file.filename + '-' + Date.now() + path.extname(file.originalname))
-//     }
-// })
-
-// const upload = multer({storage})
-
-
 const db = require('./config/db/index')
 
 db.connect()

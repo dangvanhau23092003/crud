@@ -27,8 +27,10 @@ const upload = multer({
     }
 })
 
-
+router.put('/update-edit/:id', upload.single('file'), UserController.putUser)
+router.get('/get-edit/:id', UserController.editUser)
 router.post('/create', upload.single('file'),  UserController.storeUser)
+router.get('/view/:id', UserController.getViewUser)
 router.get('/', UserController.indexUser )
 
 module.exports = router

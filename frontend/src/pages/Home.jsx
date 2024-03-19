@@ -70,7 +70,11 @@ export default function Home() {
                                     View
                                 </Link>
                             </button>
-                            <button className='border bg-yellow-500 p-2 rounded font-bold text-[#fff]'>Edit</button>
+                            <button className='border bg-yellow-500 p-2 rounded font-bold text-[#fff]'>
+                                <Link to={`/edit-user/${user._id}`}>
+                                    Edit
+                                </Link>    
+                            </button>
                             <button className='border bg-red-500 p-2 rounded font-bold text-[#fff]'>Delete</button>
                         </td>
                     </tr>
