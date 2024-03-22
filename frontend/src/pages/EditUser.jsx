@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 export default function EditUser() {
 
@@ -43,6 +44,7 @@ export default function EditUser() {
             .then(res => {
                 console.log(res.data)
                 navigate('/')
+                toast.success('Updated user successfully')
             })
             .catch(err => {
                 console.error(err)

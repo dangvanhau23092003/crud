@@ -55,6 +55,12 @@ class UserController {
             .catch(err => res.json(err))
     }
 
+    async deleteUser(req, res) {
+        await UserModel.findByIdAndDelete(req.params.id)
+        .then(() => res.json("success"))
+        .catch(err => res.status(404).json(err,'error'));
+    }
+    
 }
 
 module.exports = new UserController

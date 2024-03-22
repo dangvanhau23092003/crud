@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState } from 'react' 
+import { toast } from 'react-toastify'
 
 
 export default function Home() {
@@ -20,6 +20,18 @@ export default function Home() {
     },[])
 
     console.log("=>",users)
+
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:5000/delete/${id}`)
+        .then(res => {
+            console.log(res.data._id)
+            window.location.reload()
+            toast.success('Delete user successfully')
+        })
+        .catch((error) => {
+            console.error(error)
+        })
+    }
 
     return (
         <div className='mb-10'>
@@ -75,7 +87,13 @@ export default function Home() {
                                     Edit
                                 </Link>    
                             </button>
-                            <button className='border bg-red-500 p-2 rounded font-bold text-[#fff]'>Delete</button>
+                            {/* <form action="" method='DELETE'> */}
+                                <button 
+                                    onClick={() => handleDelete(user._id)}
+                                    className='border bg-red-500 p-2 rounded font-bold text-[#fff]'>
+                                    Delete
+                                </button>
+                            {/* </form> */}
                         </td>
                     </tr>
                 ))}

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 export default function AddUser({image}) {
 
@@ -68,6 +69,7 @@ export default function AddUser({image}) {
             .then((res) => {
                 console.log(res.data)
                 navigate('/')
+                toast.success('Add user successfully')
             })
             .catch((err) => {
                 console.log(err)

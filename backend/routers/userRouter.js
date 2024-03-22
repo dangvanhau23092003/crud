@@ -27,6 +27,7 @@ const upload = multer({
     }
 })
 
+router.delete('/delete/:id', UserController.deleteUser)
 router.put('/update-edit/:id', upload.single('file'), UserController.putUser)
 router.get('/get-edit/:id', UserController.editUser)
 router.post('/create', upload.single('file'),  UserController.storeUser)
